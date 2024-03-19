@@ -26,7 +26,7 @@ def charDmg(char1str, char2str):
 def startGame():
   source = audio.play_file('theduel.mp3')
   source.paused = False # unpause the playback
-  print('\033[35m'+"Welcome to War of the Worlds Character Builder! 🎊")
+  print('\033[35m'+"Welcome to War of the Worlds Character Builder! 🧨🏹🗡 ")
   time.sleep(2)
   os.system("clear")
   print('\033[34m',"Let's build your character!")
@@ -55,7 +55,7 @@ def startGame():
     #Character 2
 
     name2 = input('\033[36m'+"What is your second character name?: ")
-    type2 = input("What is your character's type? (👨‍🦲 human, 🤡 elf, 🎅 wizard, 🐵 orc): ")
+    type2 = input("What is your character's type? (👨‍🦲 human, 🤡 elf, 🎅 wizard, 🐵 orc):")
     print('\033[33m'+"Your second character is", name2, "and is a", type2)
     time.sleep(1)
     char2health = health()    
@@ -67,7 +67,7 @@ def startGame():
     print()
     os.system("clear")
   
-    print('\033[31m'+"Let the battle begin!")
+    print('\033[31m'+"Let the battle begin!⚔🪓🏹")
     time.sleep(3)
     os.system("clear")
   
@@ -95,12 +95,11 @@ def startGame():
   
       if char1dice > char2dice:
         winBattle += 1
-          
         char2health -= dmg
-        print('\033[35m'+ name1,"wins the blow this round! 💪");
-        time.sleep(2)
-        os.system("clear")
-        print(name2,"takes a hit, with", dmg, "damage")
+        if winBattle == 1:
+          print('\033[35m'+ name1,"wins the first blow! 💪");
+        else:
+          print('\033[35m'+ name1,"wins round", winBattle, "and deals", dmg)
         time.sleep(2)
         os.system("clear")
         print('\033[33m'+ "Current status:", name1, "has", char1health, "health and", name2, "has", char2health, "health")
@@ -108,12 +107,12 @@ def startGame():
         os.system("clear")
   
       elif char2dice > char1dice:
-          winBattle += 1
-          char1health -= dmg
-          print(name2, "wins the first blow")
-          time.sleep(2)
-          os.system("clear")
-          print(name1, "takes a hit, with", dmg, "damage")
+        winBattle += 1
+        char1health -= dmg
+        if winBattle == 1:
+          print('\033[35m'+ name2,"wins the first blow! 💪");
+        else:
+          print('\033[35m'+ name2,"wins round", winBattle, "and deals", dmg)
           time.sleep(2)
           os.system("clear")
           print('\033[33m'+ "Current status:", name1, "has", char1health, "health and", name2, "has", char2health, "health") 
@@ -153,7 +152,7 @@ def startGame():
         else:
           source.paused = True # pause the playback
           exit()
-
+        
 
 
 startGame()
